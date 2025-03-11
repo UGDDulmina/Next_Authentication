@@ -8,9 +8,11 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import { signInSchema } from "@/lib/zod";
 import LoadingButton from "@/components/ui/loading-button";
-import { handleCredentialSignin } from "@/app/actions/authActions";
+import { handleCredentialSignin, handleGithubSignin } from "@/app/actions/authActions";
 import { useState } from "react";
 import ErrorMessage from "@/components/ui/error-message";
+import { Button } from "@/components/ui/button";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default function SignIn(){
 
@@ -91,6 +93,17 @@ export default function SignIn(){
                             <LoadingButton pending={form.formState.isSubmitting}/>
                         </form>
                     </Form>
+
+                    <span className="text-sm text-gray-500 text-center block my-2">
+                        or
+                    </span>
+
+                    <form className="w-full"  action={handleGithubSignin}>
+                        <Button variant="outline" className="w-full" type="submit">
+                            <GitHubLogoIcon className="h-4 w-4 mr-2" />
+                            Sign in with GitHub
+                        </Button>
+                    </form>
                 </CardContent>
             </Card>
 

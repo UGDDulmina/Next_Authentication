@@ -35,6 +35,10 @@ export async function handleCredentialSignin({email, password}:{
     }
 }
 
+export async function handleGithubSignin(){
+    await signIn("github", {redirectTo:"/"})
+}
+
 export async function handleSignOut(){
     await signOut();
 }
